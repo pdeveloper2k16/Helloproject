@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Login BRM app</title>
+    <link rel="stylesheet" href="{% static 'css/brmcss3.css' %}">
+    </head>
+    <body>
+        <div class="topnav">
+            <h1>Book Record Management</h1>
+            <a href = "/BRMapp/view-book">View All</a>
+            <a href = "/BRMapp/new-book">New Book</a>
+            <a href = "/BRMapp/search-book">Search Book</a>
+        </div>
+        <div id = "main">
+            <form method="post">
+                {% csrf_token %}
+                <table>
+                    <tr>
+                        <td><label for="username">Username</label></td>
+                        <td><input type="text" name="username" id="username"></td>
+                    </tr>
+                    <tr>
+                        <td><label for="password">Pasword</label></td>
+                        <td><input type="password" name="password" id="password"></td>
+                    </tr>
+                     <tr>
+                        <td></td>
+                        <td><input type="submit" value="Login"></td>
+                    </tr>
+                </table>
+            </form>
+            <p>{{ error }}</p>
+        </div>
+    </body>
+</html>

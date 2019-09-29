@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Search Book</title>
+        <link rel="stylesheet" href="{% static 'css/brmcss3.css' %}">
+    </head>
+    <body>
+        <div class="topnav">
+            <h1>Book Record Management</h1>
+            <a href = "/BRMapp/view-book">View All</a>
+            <a href = "/BRMapp/new-book">New Book</a>
+            <a href = "/BRMapp/search-book">Search Book</a>
+            <a href = "/BRMapp/logout">Logout</a>
+        </div>
+        <div id = "main">
+            <h2>Search Book Records</h2>
+            <form action="/BRMapp/search" method="POST">
+                {% csrf_token %}
+                {{ form }}
+                <input type="submit" value="Search">
+            </form>
+                {% if books %}
+            <table>
+                <thead>
+                    <th>Title</th>
+                    <th>Price</th>
+                    <th>Author</th>
+                    <th>Publisher</th>
+                </thead>
+                    {% endif %}
+                    {% for book in books %}
+                    <tr>
+                        <td>{{ book.title }}</td>
+                        <td>{{ book.price }}</td>
+                        <td>{{ book.author }}</td>
+                        <td>{{ book.publisher }}</td>
+                    </tr>
+                        {% endfor %}
+                </table>
+            </div>
+    </body>
+</html>
